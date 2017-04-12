@@ -42,14 +42,6 @@ const getAWSSignedUrl = (req) => {
   return s3.getSignedUrl('getObject', params);
 };
 
-const karios = axios.create({
-  baseURL: 'https://api.kairos.com',
-  headers: {
-    'app_id': KEYS.KAIROS.APP_ID,
-    'app_key': KEYS.KAIROS.APP_KEY
-  }
-});
-
 AWS.config.update({
   accessKeyId: KEYS.AWS_S3.ACCESS_KEY,
   secretAccessKey: KEYS.AWS_S3.SECRET_KEY,
@@ -91,46 +83,19 @@ app.get('/getusers', (req, res) => {
   });
 });
 
-////GET request within POST
-// kairosGetResult = (req, res) => {
-//   return karios.get(`/v2/analytics/${req.videoId}`)
-//   .then( res => {
-//     return res.data;
-//     res.send(res.data);
-//   });
-// };
-
 app.post('/entry/video', upload.single('video'), (req, res) => {
 
-  console.log('amazon link', req.file.location);
-
+  // console.log('amazon link', req.file.location);
+  let fileBucket = req.file.bucket;
+  let fileKey = req.file.key;
+  let body = req.body;
+  let rawData = body.rawData;
+  let sumData = body.sumData;
+  console.log('sumData=========', sumData);
   ////aws presigned url
   // const url = getAWSSignedUrl(req);
   const url = req.file.location; //aws public link
-  return karios.post(`/v2/media?source=${url}`)
-  .then( postRes => {
-    console.log('karios POST COMPLETED:===', postRes.data);
-
-    //GET results with a button
-    videoId = postRes.data.id;
-
-    ////GET result within POST
-    // req.videoId = postRes.data.id;
-    // return kairosGetResult(req, res);
-  })
-  .then( result => {
-    console.log('/entry/video COMPELTE=====', result);
-    res.send(result);
-  })
-  .catch( err => console.error('KAIROS GET RESULT ERROR:===', err.message));
-});
-
-app.get('/entry/video', (req, res) => {
-  karios.get(`/v2/analytics/${videoId}`)
-    .then( res => {
-      console.log('kairosGetResult======result', res.data);
-      res.send(res.data);
-    });
+  res.send(rawData);
 });
 
 app.get('*', (req, res) => {
