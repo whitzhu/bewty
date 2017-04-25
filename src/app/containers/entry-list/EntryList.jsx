@@ -57,7 +57,7 @@ class EntryList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="entry-list-container">
         {this.renderList()}
       </div>
     );
