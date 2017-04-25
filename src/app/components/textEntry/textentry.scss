@@ -1,4 +1,7 @@
 .text-entry-container {
+  width: 40%;
+  margin: auto;
+
   @include phone {
     margin: 20px;
 
