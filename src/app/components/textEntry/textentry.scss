@@ -1,6 +1,6 @@
 .text-entry-container {
   @include phone {
-    margin-top: 20px;
+    margin: 20px;
 
     @include placeholder {
       color: $font-hint;

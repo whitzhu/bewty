@@ -166,9 +166,9 @@ class AudioEntry extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="audio-entry-container">
         <br/>
-        <audio autoPlay='true' src={this.state.src} muted="muted" controls></audio>
+        <audio autoPlay='true' src={this.state.src} className="audio" muted="muted" controls></audio>
         <div>
         <MuiThemeProvider>
           <RaisedButton

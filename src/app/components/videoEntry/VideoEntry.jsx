@@ -331,7 +331,7 @@ export default class VideoEntry extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className='video-entry-container'>
         {this.state.start &&
         (<VoiceRecognition
           onEnd={this.onEnd}
@@ -341,8 +341,8 @@ export default class VideoEntry extends Component {
           stop={this.state.stop}
         />)}
           { this.state.playback
-            ? <video autoPlay='true' src={this.state.src} controls></video>
-            : <video autoPlay='true' src={this.state.src} muted></video>
+            ? <video autoPlay='true' src={this.state.src} className="video" controls></video>
+            : <video autoPlay='true' src={this.state.src} className="video" muted></video>
           }
           <div className='flash-message'>
             {this.state.loadingRecordMsg ? <p>Loading and starting the emotions detector.<br/>This may take a moment.</p> : null }
