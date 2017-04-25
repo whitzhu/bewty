@@ -1,9 +1,10 @@
 .text-entry-container {
-  width: 40%;
-  margin: auto;
+  width: 30%;
+  margin: 20px auto;
 
   @include phone {
-    margin: 20px;
+    margin: 20px auto;
+    width: 80%;
 
     @include placeholder {
       color: $font-hint;
