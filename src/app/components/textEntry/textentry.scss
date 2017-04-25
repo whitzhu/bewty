@@ -1,4 +1,13 @@
+.text-entry-container {
+  @include phone {
+    margin-top: 20px;
 
+    @include placeholder {
+      color: $font-hint;
+      font-size: 1.2em;
+    }
+  }
+}
 
 .error {
   color: rgb(244, 67, 54);
