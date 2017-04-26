@@ -5,6 +5,7 @@ import BarChart from '../../components/results/video-bar-chart/BarChart';
 import LineChart from '../../components/results/video-line-chart/LineChart';
 import MediaPlayer from '../../components/mediaplayer/MediaPlayer.jsx';
 import EntryTextDisplay from '../../components/entry-text-display/EntryTextDisplay.jsx';
+// import svg from '../../styles/assets/nombile_animated.svg';
 
 class EntryView extends Component {
   constructor(props) {
@@ -37,13 +38,14 @@ class EntryView extends Component {
       </div>
     );
   }
+            // <img src={img} />
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     entrySelected: state.entrySelected,
     fetchMedia: state.fetchMedia
   };
-}
+};
 
 export default connect(mapStateToProps, null)(EntryView);
